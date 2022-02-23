@@ -3,7 +3,9 @@
 <!-- <app-heroes></app-heroes> The AppComponent template no longer needs <app-heroes> because the application will only display the HeroesComponent when the user navigates to it.
   The <router-outlet> tells the router where to display routed views. -->
 <nav>
+  <a routerLink="/dashboard">Dashboard</a>
   <a routerLink="/heroes">Heroes</a>
 </nav>
+
 <router-outlet></router-outlet>
 <app-messages></app-messages>

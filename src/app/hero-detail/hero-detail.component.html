@@ -8,6 +8,8 @@
     <input id="hero-name" [(ngModel)]="hero.name" placeholder="name" />
   </div>
   <div>
-    <span>Hero quirk: <span>{{hero.quirk}}</span></span>
+    <label>Hero quirk: <span>{{hero.quirk}}</span></label>
   </div>
+  <button type="button" (click)="save()">save</button>
+  <button type="button" (click)="goBack()">go back</button>
 </div>

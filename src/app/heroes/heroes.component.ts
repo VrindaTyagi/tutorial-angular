@@ -15,6 +15,7 @@ export class HeroesComponent implements OnInit {
 
   heroes: Hero[] = [];
   selectedHero?: Hero;
+
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
   }
@@ -23,11 +24,20 @@ export class HeroesComponent implements OnInit {
     this.getHeroes();
   }
 
-  hero: Hero = {
-    id: 1,
-    name: 'Doctor Strange',
-    quirk: 'Can control time and multiple universes',
-  };
+  // hero: Hero = {
+  //   id: 1,
+  //   name: 'Doctor Strange',
+  //   quirk: 'Can control time and multiple universes',
+  // };
+
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.heroService.addHero({ name } as Hero)
+      .subscribe((hero: Hero) => {
+        this.heroes.push(hero);
+      });
+  }
 
   //synchronous way
   // getHeroes(): void {
@@ -36,5 +46,10 @@ export class HeroesComponent implements OnInit {
   //asynchronous way
   getHeroes(): void {
     this.heroService.getHeroes().subscribe((heroes: Hero[]) => (this.heroes = heroes));
+  }
+
+  delete(hero: Hero): void {
+    this.heroes = this.heroes.filter(h => h !== hero);
+    this.heroService.deleteHero(hero.id).subscribe();
   }
 }
