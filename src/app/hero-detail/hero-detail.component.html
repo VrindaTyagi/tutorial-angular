@@ -1,0 +1,13 @@
+<!-- When the application starts, the selectedHero is undefined by design. The component should only display the selected hero details if the selectedHero exists. Add Angular's *ngIf directive to the 'div' and set it to selectedHero. -->
+<div *ngIf="hero" class="details-container">
+  <h2>{{ hero.name | uppercase }} Details</h2>
+  <div><span>id: </span>{{ hero.id }}</div>
+  <div>
+    <label for="hero-name">Hero name: </label>
+    <!-- [(ngModel)] is Angular's two-way data binding syntax. Here it binds the hero.name property to the HTML textbox so that data can flow in both directions: from the hero.name property to the textbox, and from the textbox back to the hero.name. -->
+    <input id="hero-name" [(ngModel)]="hero.name" placeholder="name" />
+  </div>
+  <div>
+    <span>Hero quirk: <span>{{hero.quirk}}</span></span>
+  </div>
+</div>
